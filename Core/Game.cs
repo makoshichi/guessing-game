@@ -14,9 +14,7 @@ namespace GuessingGameReproduction.Core
         public Game(IDialogService dialogService)
         {
             this.dialogService = dialogService;
-            IsGameOver = false;
             SetFirstQuestion();
-            //Start();
         }
 
         private void SetFirstQuestion()
@@ -33,6 +31,7 @@ namespace GuessingGameReproduction.Core
 
         public void Start()
         {
+            IsGameOver = false;
             var proceed = dialogService.FirstQuestion;
 
             if (!proceed.Equals(DialogResult.OK))
