@@ -6,16 +6,16 @@ namespace GuessingGameReproduction.GUI
 {
     public class DialogService : IDialogService
     {
-        public DialogResult FirstQuestion => MessageBox.Show("Think about an animal...", "Guessing Game", MessageBoxButtons.OKCancel);
+        public bool CanProceed => MessageBox.Show("Think about an animal...", "Guessing Game", MessageBoxButtons.OKCancel) == DialogResult.OK;
 
         public bool IsAnswerYes(Node node)
         {
             return MessageBox.Show($"Does the animal that you thought about {node.Question}?", "Guessing Game", MessageBoxButtons.YesNo).Equals(DialogResult.Yes);
         }
 
-        public DialogResult Guess(Node currentGuess)
+        public bool IsGuessYes(Node currentGuess)
         {
-            return MessageBox.Show($"Is the animal you thought about a {currentGuess.Answer}?", "Guessing Game", MessageBoxButtons.YesNo);
+            return MessageBox.Show($"Is the animal you thought about a {currentGuess.Answer}?", "Guessing Game", MessageBoxButtons.YesNo) == DialogResult.Yes;
         }
 
         public void ShowGameOverMessage()

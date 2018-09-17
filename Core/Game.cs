@@ -1,12 +1,11 @@
 ﻿using GuessingGameReproduction.GUI;
-using System.Windows.Forms;
 
 namespace GuessingGameReproduction.Core
 {
     public class Game
     {
         private IDialogService dialogService;
-        private Node firstNode;
+        private Node rootNode;
         private Node currentGuess = null;
         public DecisionTree DecisionTree { get; private set; }
         public bool IsGameOver { get; private set; }
@@ -19,39 +18,36 @@ namespace GuessingGameReproduction.Core
 
         private void SetFirstQuestion()
         {
-            firstNode = new Node("lives in water", string.Empty);
+            rootNode = new Node("lives in water", string.Empty);
             var answerYes = new Node
             {
                 Answer = "shark"
             };
-            firstNode.AnswerYes = answerYes;
+            rootNode.AnswerYes = answerYes;
 
             var answerNo = new Node
             {
                 Answer = "monkey"
             };
-            firstNode.AnswerNo = answerNo;
+            rootNode.AnswerNo = answerNo;
 
-            DecisionTree = new DecisionTree(firstNode);
+            DecisionTree = new DecisionTree(rootNode);
         }
 
         public void Start()
         {
             IsGameOver = false;
-            var proceed = dialogService.FirstQuestion;
 
-            if (!proceed.Equals(DialogResult.OK))
+            if (!dialogService.CanProceed)
                 return;
 
             currentGuess = null;
-            Ask(firstNode);
+            Ask(rootNode);
         }
 
         public void Ask(Node node)
         {
-            bool isAnswerYes = dialogService.IsAnswerYes(node);
-
-            if (isAnswerYes)
+            if (dialogService.IsAnswerYes(node))
             {
                 if (currentGuess == null)
                     currentGuess = node = node.AnswerYes;
@@ -77,9 +73,7 @@ namespace GuessingGameReproduction.Core
 
         public void Guess(Node node, bool isAnswerYes)
         {
-            var guess = dialogService.Guess(currentGuess);
-
-            if (guess.Equals(DialogResult.Yes))
+            if (dialogService.IsGuessYes(currentGuess))
             {
                 dialogService.ShowGameOverMessage();
                 IsGameOver = true;
@@ -116,6 +110,6 @@ namespace GuessingGameReproduction.Core
         // AddNewQuestionAnswerNo
         // AskMultipleQuestions
         // GuessMultipleAnswers
-        // AddNewQuestions
+        // AddMultipleNewQuestions?
     }
 }

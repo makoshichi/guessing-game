@@ -1,13 +1,12 @@
 ﻿using GuessingGameReproduction.Core;
-using System.Windows.Forms;
 
 namespace GuessingGameReproduction.GUI
 {
     public interface IDialogService
     {
-        DialogResult FirstQuestion { get; }
+        bool CanProceed { get; }
         bool IsAnswerYes(Node node);
-        DialogResult Guess(Node currentGuess);
+        bool IsGuessYes(Node currentGuess);
         string ShowPromptDialog(string message);
         void ShowGameOverMessage();
     }
