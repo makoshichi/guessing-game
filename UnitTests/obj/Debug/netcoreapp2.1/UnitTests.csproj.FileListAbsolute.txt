@@ -1,0 +1,13 @@
+C:\Work\hoplon\code\guessing-game\UnitTests\bin\Debug\netcoreapp2.1\UnitTests.deps.json
+C:\Work\hoplon\code\guessing-game\UnitTests\bin\Debug\netcoreapp2.1\UnitTests.dll
+C:\Work\hoplon\code\guessing-game\UnitTests\bin\Debug\netcoreapp2.1\GuessingGameReproduction.exe
+C:\Work\hoplon\code\guessing-game\UnitTests\bin\Debug\netcoreapp2.1\GuessingGameReproduction.pdb
+C:\Work\hoplon\code\guessing-game\UnitTests\bin\Debug\netcoreapp2.1\GuessingGameReproduction.exe.config
+C:\Work\hoplon\code\guessing-game\UnitTests\obj\Debug\netcoreapp2.1\UnitTests.csprojAssemblyReference.cache
+C:\Work\hoplon\code\guessing-game\UnitTests\obj\Debug\netcoreapp2.1\UnitTests.csproj.CoreCompileInputs.cache
+C:\Work\hoplon\code\guessing-game\UnitTests\obj\Debug\netcoreapp2.1\UnitTests.AssemblyInfoInputs.cache
+C:\Work\hoplon\code\guessing-game\UnitTests\obj\Debug\netcoreapp2.1\UnitTests.AssemblyInfo.cs
+C:\Work\hoplon\code\guessing-game\UnitTests\obj\Debug\netcoreapp2.1\UnitTests.csproj.CopyComplete
+C:\Work\hoplon\code\guessing-game\UnitTests\bin\Debug\netcoreapp2.1\UnitTests.pdb
+C:\Work\hoplon\code\guessing-game\UnitTests\obj\Debug\netcoreapp2.1\UnitTests.dll
+C:\Work\hoplon\code\guessing-game\UnitTests\obj\Debug\netcoreapp2.1\UnitTests.pdb
