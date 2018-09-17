@@ -77,9 +77,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\DecisionTree.cs" />
     <Compile Include="Core\Game.cs" />
-    <Compile Include="GUI\InputBox.cs" />
+    <Compile Include="GUI\DialogService.cs" />
     <Compile Include="Core\Node.cs" />
+    <Compile Include="GUI\Interfaces\IDialogService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

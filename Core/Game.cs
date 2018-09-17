@@ -1,34 +1,39 @@
 ﻿using GuessingGameReproduction.GUI;
-using System;
 using System.Windows.Forms;
 
 namespace GuessingGameReproduction.Core
 {
-    class Game
+    public class Game
     {
+        private IDialogService dialogService;
         private Node firstNode;
         private Node currentGuess = null;
+        public DecisionTree DecisionTree { get; private set; }
+        public bool IsGameOver { get; private set; }
 
-        public Game()
+        public Game(IDialogService dialogService)
         {
+            this.dialogService = dialogService;
+            IsGameOver = false;
             SetFirstQuestion();
-            Start();
+            //Start();
         }
 
         private void SetFirstQuestion()
         {
-            firstNode = new Node("lives in water", String.Empty);
+            firstNode = new Node("lives in water", string.Empty);
             var answerYes = new Node();
             answerYes.Answer = "shark";
             firstNode.AnswerYes = answerYes;
             var answerNo = new Node();
             answerNo.Answer = "monkey";
             firstNode.AnswerNo = answerNo;
+            DecisionTree = new DecisionTree(firstNode);
         }
 
-        private void Start()
+        public void Start()
         {
-            var proceed = MessageBox.Show("Think about an animal...", "Guessing Game", MessageBoxButtons.OKCancel);
+            var proceed = dialogService.FirstQuestion;
 
             if (!proceed.Equals(DialogResult.OK))
                 return;
@@ -37,10 +42,9 @@ namespace GuessingGameReproduction.Core
             Ask(firstNode);
         }
 
-        private void Ask(Node node)
+        public void Ask(Node node)
         {
-            bool isAnswerYes = MessageBox.Show(String.Format("Does the animal that you thought about {0}?", node.Question), 
-                "Guessing Game", MessageBoxButtons.YesNo).Equals(DialogResult.Yes);
+            bool isAnswerYes = dialogService.IsAnswerYes(node);
 
             if (isAnswerYes)
             {
@@ -66,25 +70,27 @@ namespace GuessingGameReproduction.Core
             }
         }
 
-        private void Guess(Node node, bool isAnswerYes)
+        public void Guess(Node node, bool isAnswerYes)
         {
-            var guess = MessageBox.Show(String.Format("Is the animal you thought about a {0}?", currentGuess.Answer), 
-                "Guessing Game", MessageBoxButtons.YesNo);
+            var guess = dialogService.Guess(currentGuess);
 
             if (guess.Equals(DialogResult.Yes))
-                MessageBox.Show("I win!", "Guessing Game");
+            {
+                dialogService.ShowGameOverMessage();
+                IsGameOver = true;
+            }
             else
                 AddNewQuestion(node, isAnswerYes);
 
             Start();
         }
 
-        private void AddNewQuestion(Node node, bool isAnswerYes)
+        public void AddNewQuestion(Node node, bool isAnswerYes)
         {
-            var newAnswer = InputBox.Show("What was the animal that you thought about?");
+            var newAnswer = dialogService.ShowPromptDialog("What was the animal that you thought about?");
 
-            var newQuestion = 
-                InputBox.Show(String.Format("A {0} _______ but a {1} does not (Fill it with an animal trait, like 'lives in water').", newAnswer, currentGuess.Answer));
+            var newQuestion =
+                dialogService.ShowPromptDialog($"A {newAnswer} _______ but a {currentGuess.Answer} does not (Fill it with an animal trait, like 'lives in water').");
 
             var newNode = new Node(newQuestion, newAnswer);
 
@@ -92,6 +98,8 @@ namespace GuessingGameReproduction.Core
                 node.AnswerYes = newNode;
             else
                 node.AnswerNo = newNode;
+
+            DecisionTree.Tree = node;
         }
     }
 }

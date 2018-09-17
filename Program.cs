@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using GuessingGameReproduction.Core;
+using GuessingGameReproduction.GUI;
+using System;
 using System.Windows.Forms;
 
 namespace GuessingGameReproduction
@@ -17,7 +16,8 @@ namespace GuessingGameReproduction
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            new Core.Game();
+            var game = new Game(new DialogService());
+            game.Start();
         }
     }
 }

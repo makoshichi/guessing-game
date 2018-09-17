@@ -1,0 +1,13 @@
+C:\Work\hoplon\code\guessing-game\bin\Debug\GuessingGameReproduction.exe.config
+C:\Work\hoplon\code\guessing-game\bin\Debug\GuessingGameReproduction.exe.manifest
+C:\Work\hoplon\code\guessing-game\bin\Debug\GuessingGameReproduction.application
+C:\Work\hoplon\code\guessing-game\bin\Debug\GuessingGameReproduction.exe
+C:\Work\hoplon\code\guessing-game\bin\Debug\GuessingGameReproduction.pdb
+C:\Work\hoplon\code\guessing-game\obj\Debug\GuessingGameReproduction.csprojAssemblyReference.cache
+C:\Work\hoplon\code\guessing-game\obj\Debug\GuessingGameReproduction.Properties.Resources.resources
+C:\Work\hoplon\code\guessing-game\obj\Debug\GuessingGameReproduction.csproj.GenerateResource.cache
+C:\Work\hoplon\code\guessing-game\obj\Debug\GuessingGameReproduction.csproj.CoreCompileInputs.cache
+C:\Work\hoplon\code\guessing-game\obj\Debug\GuessingGameReproduction.exe.manifest
+C:\Work\hoplon\code\guessing-game\obj\Debug\GuessingGameReproduction.application
+C:\Work\hoplon\code\guessing-game\obj\Debug\GuessingGameReproduction.exe
+C:\Work\hoplon\code\guessing-game\obj\Debug\GuessingGameReproduction.pdb
