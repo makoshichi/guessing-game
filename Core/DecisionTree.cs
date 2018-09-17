@@ -3,22 +3,22 @@
     public class DecisionTree
     {
         private Node _tree;
-        public int LeafCount { get; private set; }
+        public int NodesCount { get; private set; }
         public Node Tree
         {
             get { return _tree; }
             set
             {
-                LeafCount++;
+                NodesCount++;
                 _tree = value;
             }
         }
 
         public DecisionTree(Node startingTree)
         {
-            // shark and monkey;
+            // root node, shark and monkey leaves
             _tree = startingTree;
-            LeafCount = 2;
+            NodesCount = 3;
         }
     }
 }

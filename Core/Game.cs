@@ -20,12 +20,18 @@ namespace GuessingGameReproduction.Core
         private void SetFirstQuestion()
         {
             firstNode = new Node("lives in water", string.Empty);
-            var answerYes = new Node();
-            answerYes.Answer = "shark";
+            var answerYes = new Node
+            {
+                Answer = "shark"
+            };
             firstNode.AnswerYes = answerYes;
-            var answerNo = new Node();
-            answerNo.Answer = "monkey";
+
+            var answerNo = new Node
+            {
+                Answer = "monkey"
+            };
             firstNode.AnswerNo = answerNo;
+
             DecisionTree = new DecisionTree(firstNode);
         }
 
@@ -100,5 +106,16 @@ namespace GuessingGameReproduction.Core
 
             DecisionTree.Tree = node;
         }
+
+        // Tests:
+        // AskAnswerYes
+        // AskAnswerNo
+        // GuessAnswerYes
+        // GuesAnswerNo
+        // AddNewQuestionAnswerYes
+        // AddNewQuestionAnswerNo
+        // AskMultipleQuestions
+        // GuessMultipleAnswers
+        // AddNewQuestions
     }
 }
