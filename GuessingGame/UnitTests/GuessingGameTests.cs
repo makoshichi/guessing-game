@@ -35,7 +35,7 @@ namespace UnitTests
         }
 
         [Test]
-        public void GuessYes() //Endgame
+        public void GuessYes() 
         {
             game.Ask(game.DecisionTree.Tree);
             ((MockService)mockService).DialogGuessYes = true;
@@ -64,23 +64,41 @@ namespace UnitTests
             Assert.That(game.IsGameOver);
         }
 
-        //[Test]
-        //public void AskAnswerYesGuessNo()
-        //{
+        [Test]
+        public void AskAnswerYesGuessNo()
+        {
+            int previousCount = game.DecisionTree.NodesCount;
+            ((MockService)mockService).DialogAnswerYes = true;
+            game.Ask(game.DecisionTree.Tree);
+            game.CurrentGuess.AnswerYes = null;
+            ((MockService)mockService).DialogGuessYes = true;
+            game.Guess(game.CurrentGuess, true);
+            Assert.Less(previousCount, game.DecisionTree.NodesCount);
+        }
 
-        //}
+        [Test]
+        public void AskAnswerNoGuessYes()
+        {
+            int previousCount = game.DecisionTree.NodesCount;
+            ((MockService)mockService).DialogAnswerYes = false;
+            game.Ask(game.DecisionTree.Tree);
+            game.CurrentGuess.AnswerYes = null; 
+            ((MockService)mockService).DialogGuessYes = true;
+            game.Guess(game.CurrentGuess, true);
+            Assert.Less(previousCount, game.DecisionTree.NodesCount);
+        }
 
-        //[Test]
-        //public void AskAnswerNoGuessYes()
-        //{
-
-        //}
-
-        //[Test]
-        //public void AskAnswerNoGuessNo()
-        //{
-
-        //}
+        [Test]
+        public void AskAnswerNoGuessNo()
+        {
+            int previousCount = game.DecisionTree.NodesCount;
+            ((MockService)mockService).DialogAnswerYes = false;
+            game.Ask(game.DecisionTree.Tree);
+            game.CurrentGuess.AnswerYes = null; 
+            ((MockService)mockService).DialogGuessYes = true;
+            game.Guess(game.CurrentGuess, true);
+            Assert.That(game.IsGameOver);
+        }
 
         [Test]
         public void AddQuestion()
@@ -90,17 +108,5 @@ namespace UnitTests
             game.AddNewQuestion(game.DecisionTree.Tree, true);
             Assert.Less(previousCount, game.DecisionTree.NodesCount);
         }
-
-        //[Test]
-        //public void AddQuestionGuessYes()
-        //{
-
-        //}
-
-        //[Test]
-        //public void AddQuestionGuessNo()
-        //{
-
-        //}
     }
 }
