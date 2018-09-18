@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GuessingGameReproduction.Properties
+namespace GuessingGame.Properties
 {
 
 

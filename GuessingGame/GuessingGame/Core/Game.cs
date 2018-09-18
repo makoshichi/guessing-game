@@ -57,7 +57,10 @@ namespace GuessingGameReproduction.Core
                     CurrentGuess = node;
 
                 if (CurrentGuess.AnswerYes == null)
+                {
                     Guess(node, true);
+                    Start();
+                }
                 else
                     Ask(CurrentGuess.AnswerYes);
             }
@@ -67,7 +70,10 @@ namespace GuessingGameReproduction.Core
                     CurrentGuess = node = node.AnswerNo;
 
                 if (node.AnswerNo == null)
+                {
                     Guess(node, false);
+                    Start();
+                }
                 else
                     Ask(node.AnswerNo);
             }
@@ -83,7 +89,7 @@ namespace GuessingGameReproduction.Core
             else
                 AddNewQuestion(node, isAnswerYes);
 
-            Start();
+            //Start();
         }
 
         public void AddNewQuestion(Node node, bool isAnswerYes)
@@ -102,16 +108,5 @@ namespace GuessingGameReproduction.Core
 
             DecisionTree.Tree = node;
         }
-
-        // Tests:
-        // AskAnswerYes
-        // AskAnswerNo
-        // GuessAnswerYes
-        // GuesAnswerNo
-        // AddNewQuestionAnswerYes
-        // AddNewQuestionAnswerNo
-        // AskMultipleQuestions
-        // GuessMultipleAnswers
-        // AddMultipleNewQuestions?
     }
 }

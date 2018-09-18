@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2003
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuessingGame", "GuessingGame\GuessingGame.csproj", "{46258BF2-96F5-46B7-8929-D91C84843C79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{0E3D16F9-7114-405C-BC08-6F42D7F34C54}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{46258BF2-96F5-46B7-8929-D91C84843C79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46258BF2-96F5-46B7-8929-D91C84843C79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46258BF2-96F5-46B7-8929-D91C84843C79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46258BF2-96F5-46B7-8929-D91C84843C79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E3D16F9-7114-405C-BC08-6F42D7F34C54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E3D16F9-7114-405C-BC08-6F42D7F34C54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E3D16F9-7114-405C-BC08-6F42D7F34C54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E3D16F9-7114-405C-BC08-6F42D7F34C54}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BB70F1EA-DD22-4348-88A4-C9D3DC0A3AAD}
+	EndGlobalSection
+EndGlobal

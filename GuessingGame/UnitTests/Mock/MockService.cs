@@ -3,22 +3,22 @@ using GuessingGameReproduction.GUI;
 
 namespace UnitTests.Mock
 {
-    class DialogMock : IDialogService
+    class MockService : IDialogService
     {
-        public bool AnswerYes { get; set; }
-        public bool GuessYes { get; set; }
+        public bool DialogAnswerYes { get; set; }
+        public bool DialogGuessYes { get; set; }
         public bool IsStart { get; set; }
 
         public bool CanProceed => IsStart;
 
         public bool IsAnswerYes(Node node)
         {
-            return AnswerYes;
+            return DialogAnswerYes;
         }
 
         public bool IsGuessYes(Node currentGuess)
         {
-            return GuessYes;
+            return DialogGuessYes;
         }
 
         public void ShowGameOverMessage() { }

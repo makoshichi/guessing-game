@@ -1,0 +1,7 @@
+.vs
+GuessingGame/GuessingGame/bin
+GuessingGame/GuessingGame/obj
+GuessingGame/.vs
+GuessingGame/packages
+GuessingGame/UnitTests/obj
+GuessingGame/UnitTests/bin
