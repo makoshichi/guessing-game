@@ -71,7 +71,7 @@ namespace UnitTests
             ((MockService)mockService).DialogAnswerYes = true;
             game.Ask(game.DecisionTree.Tree);
             game.CurrentGuess.AnswerYes = null;
-            ((MockService)mockService).DialogGuessYes = true;
+            ((MockService)mockService).DialogGuessYes = false;
             game.Guess(game.CurrentGuess, true);
             Assert.Less(previousCount, game.DecisionTree.NodesCount);
         }
@@ -82,10 +82,10 @@ namespace UnitTests
             int previousCount = game.DecisionTree.NodesCount;
             ((MockService)mockService).DialogAnswerYes = false;
             game.Ask(game.DecisionTree.Tree);
-            game.CurrentGuess.AnswerYes = null; 
+            game.CurrentGuess.AnswerNo = null;
             ((MockService)mockService).DialogGuessYes = true;
             game.Guess(game.CurrentGuess, true);
-            Assert.Less(previousCount, game.DecisionTree.NodesCount);
+            Assert.That(game.IsGameOver);
         }
 
         [Test]
@@ -94,10 +94,10 @@ namespace UnitTests
             int previousCount = game.DecisionTree.NodesCount;
             ((MockService)mockService).DialogAnswerYes = false;
             game.Ask(game.DecisionTree.Tree);
-            game.CurrentGuess.AnswerYes = null; 
-            ((MockService)mockService).DialogGuessYes = true;
+            game.CurrentGuess.AnswerNo = null;
+            ((MockService)mockService).DialogGuessYes = false;
             game.Guess(game.CurrentGuess, true);
-            Assert.That(game.IsGameOver);
+            Assert.Less(previousCount, game.DecisionTree.NodesCount);
         }
 
         [Test]
