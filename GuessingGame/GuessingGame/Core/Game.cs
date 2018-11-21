@@ -36,6 +36,11 @@ namespace GuessingGameReproduction.Core
             DecisionTree = new DecisionTree(rootNode);
         }
 
+        private Node ChooseFromRootNode(bool isAnswerYes)
+        {
+            return isAnswerYes ? rootNode.AnswerYes : rootNode.AnswerNo;
+        }
+
         public void Start()
         {
             IsGameOver = false;
@@ -49,34 +54,22 @@ namespace GuessingGameReproduction.Core
 
         public void Ask(Node node)
         {
-            if (dialogService.IsAnswerYes(node))
-            {
-                if (CurrentGuess == null)
-                    CurrentGuess = node = node.AnswerYes;
-                else
-                    CurrentGuess = node;
+            bool isAnswerYes = dialogService.IsAnswerYes(node);
 
-                if (CurrentGuess.AnswerYes == null)
-                {
-                    Guess(node, true);
-                    Start();
-                }
-                else
-                    Ask(CurrentGuess.AnswerYes);
+            if (CurrentGuess == null) 
+                CurrentGuess = node = ChooseFromRootNode(isAnswerYes);
+            else if (isAnswerYes)
+                CurrentGuess = node;
+
+            var nextQuestion = isAnswerYes ? CurrentGuess.AnswerYes : node.AnswerNo;
+
+            if (nextQuestion == null)
+            {
+                Guess(node, isAnswerYes);
+                Start();
             }
             else
-            {
-                if (CurrentGuess == null)
-                    CurrentGuess = node = node.AnswerNo;
-
-                if (node.AnswerNo == null)
-                {
-                    Guess(node, false);
-                    Start();
-                }
-                else
-                    Ask(node.AnswerNo);
-            }
+                Ask(nextQuestion);
         }
 
         public void Guess(Node node, bool isAnswerYes)
